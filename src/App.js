@@ -71,6 +71,11 @@ const RenderIFrame = ({ userCourseData }) => {
       x.cmi.core.student_id = userCourseData.id;
       x.cmi.core.student_name = userCourseData.name;
       x.LMSSetValue("cmi.core.lesson_status", "not attempted");
+
+      const customEvent = new CustomEvent("postToLMS", JSON.stringify(x.cmi.core));
+      document.dispatchEvent(customEvent);
+
+
     });
 
     // x.on("LMSSetValue.cmi.*", function (CMIElement, value) {
